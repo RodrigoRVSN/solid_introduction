@@ -1,0 +1,169 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Solid DOC",
+    "description": "This is a doc of the api made to consolid solid concepts",
+    "version": "1.0.0",
+    "contact": {
+      "email": "rodrigovictor81@gmail.com"
+    }
+  },
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Login a user",
+        "description": "Login a new user here",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "propperties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Rodrigo",
+                  "description": "rodrigovictor81@gmail.com"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "User exists"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "List all users",
+        "name": "List all users",
+        "description": "List all new users here",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Check",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": "string",
+                    "email": "string"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "User not exists"
+          }
+        }
+      }
+    },
+    
+    "/users/{user_id}": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "name": "Login a user",
+        "description": "Login a new user here",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": "string",
+                    "email": "string"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "User exists"
+          }
+        }
+      }
+    },
+
+    "/users/{user_id}/admin": {
+      "patch": {
+        "tags": [
+          "users"
+        ],
+        "name": "Login a user",
+        "description": "Login a new user here",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": "string",
+                    "email": "string"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User exists"
+          }
+        }
+      }
+    }
+  }
+}

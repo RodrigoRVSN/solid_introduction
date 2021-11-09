@@ -1,0 +1,71 @@
+{
+  "openapi": "3.0.0",
+  "info":{
+    "title": "rentalx doc",
+    "description": "Api of rentalx",
+    "version": "1.0.0",
+    "contact": {
+      "email": "rodrigovictor81@gmail.com"
+    }
+  },
+  "paths":{
+    "/categories/new":{
+      "post":{
+        "summary": "Create a category",
+        "description": "Create new category here",
+        "requestBody":{
+          "content":{
+            "application/json":{
+              "schema":{
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description":{
+                    "type": "string"
+                  }
+                },
+                "example":{
+                  "name": "example of name of category",
+                  "description": "example of description of category"
+                }
+              }
+            }
+          }
+        },
+        "responses":{
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Category already exists"
+          }
+        }
+      } 
+    },
+    
+    "/categories/list": {
+      "get":{
+      "tags": ["Category"],
+      "summary": "List all categories",
+      "description": "list all categories",
+      "responses":{
+        "200": {
+          "description": "Success",
+          "content":{
+            "application/json":{
+              "schema":{
+                "type": "object",
+                "properties":{
+                  "name": "string",
+                  "description": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }}
+  }
+}
